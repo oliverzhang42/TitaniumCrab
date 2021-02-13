@@ -1,5 +1,6 @@
 import numpy as np
 import umap
+from sklearn.manifold import TSNE
 from sklearn.preprocessing import StandardScaler
 
 class DimReducer():
@@ -7,10 +8,12 @@ class DimReducer():
         self.scalar = StandardScaler()
         if alg == 'umap':
             self.reducer = umap.UMAP()
+        elif alg == 'tsne':
+            self.reducer = TSNE()
 
     def fit(self, data):
-        scaled_data = self.scalar.fit_transform(data)
-        reduced_data = self.reducer.fit_transform(scaled_data)
+        # scaled_data = self.scalar.fit_transform(data)
+        reduced_data = self.reducer.fit_transform(data)
         return reduced_data
     
     def transform(self, data):

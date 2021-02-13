@@ -1,6 +1,6 @@
 from transformers import BertTokenizer, BertModel
 
-class TextEmbedder():
+class TransformerEmbedder():
     def __init__(self, model='bert'):
         if model == 'bert':
             self.tokenizer = BertTokenizer.from_pretrained('bert-base-uncased')

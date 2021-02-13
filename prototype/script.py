@@ -2,18 +2,18 @@ import numpy as np
 import matplotlib.pyplot as plt
 from dataset_reader import DatasetReader
 from dim_reducer import DimReducer
-from text_embedder import TextEmbedder
+from transformer_embedder import TransformerEmbedder
 
 
 # Initialization
 reader = DatasetReader()
-embedder = TextEmbedder()
-reducer = DimReducer()
+embedder = TransformerEmbedder()
+reducer = DimReducer(alg='umap')
 article_list = []
 embedding_list = []
 
 # Getting Embeddings
-num_limit = 1000
+num_limit = 100
 i = 0
 for article in reader:
     embedding = embedder.to_embedding(article.text)
