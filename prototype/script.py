@@ -29,7 +29,6 @@ for i, embedding in enumerate(embedding_list):
 
 # Getting Coordinates
 embedding_list = np.array(embedding_list)
-import pudb; pudb.set_trace()
 reduced_data = reducer.fit_transform(embedding_list)
 for i, coords in enumerate(reduced_data):
     article_list[i].set_coordinates(coords)
