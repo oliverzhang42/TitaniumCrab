@@ -1,10 +1,12 @@
 import csv
 import numpy as np
 import matplotlib.pyplot as plt
+from sklearn.decomposition import TruncatedSVD
 from sklearn.feature_extraction import text
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.manifold import TSNE
 from sklearn.preprocessing import StandardScaler
+from umap import UMAP
 
 categories = []
 corpus = []
@@ -29,21 +31,11 @@ with open('bbc-text.csv', 'r') as f:
 vectorizer = TfidfVectorizer(stop_words=text.ENGLISH_STOP_WORDS)
 X = vectorizer.fit_transform(corpus)
 
-# Umap Down
-import umap
 reducer = umap.UMAP()
-
 #reducer = TSNE()
-#scalar = StandardScaler() ACTUALLY TERRIBLE LMAO
-#scaled_data = scalar.fit_transform(X.toarray())
+#reducer = TruncatedSVD()
+
 reduced_data = reducer.fit_transform(X.toarray())
-
-# TSNE
-
-
-#from sklearn.decomposition import TruncatedSVD
-#svd = TruncatedSVD()
-#reduced_data = svd.fit_transform(X)
 
 # Display
 category_dict = {}
