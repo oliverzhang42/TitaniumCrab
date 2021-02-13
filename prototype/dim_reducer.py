@@ -1,21 +1,21 @@
 import numpy as np
-import umap
+from sklearn.decomposition import TruncatedSVD
 from sklearn.manifold import TSNE
-from sklearn.preprocessing import StandardScaler
+from umap import UMAP
+
 
 class DimReducer():
     def __init__(self, alg='umap'):
-        self.scalar = StandardScaler()
         if alg == 'umap':
-            self.reducer = umap.UMAP()
+            self.reducer = UMAP()
         elif alg == 'tsne':
             self.reducer = TSNE()
+        elif alg == 'svd':
+            self.reducer = TruncatedSVD()
 
-    def fit(self, data):
-        # scaled_data = self.scalar.fit_transform(data)
-        reduced_data = self.reducer.fit_transform(data)
-        return reduced_data
-    
+    def fit_transform(self, data):
+        return self.reducer.fit_transform(data)
+        
     def transform(self, data):
         if len(data.shape) == 1:
             data = np.array([data])

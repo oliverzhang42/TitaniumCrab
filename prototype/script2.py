@@ -31,7 +31,7 @@ with open('bbc-text.csv', 'r') as f:
 vectorizer = TfidfVectorizer(stop_words=text.ENGLISH_STOP_WORDS)
 X = vectorizer.fit_transform(corpus)
 
-reducer = umap.UMAP()
+reducer = UMAP()
 #reducer = TSNE()
 #reducer = TruncatedSVD()
 
