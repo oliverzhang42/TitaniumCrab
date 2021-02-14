@@ -1,0 +1,18 @@
+[
+    {
+        "text": "Sample Text",
+        "metadata": {
+            "source": "NYT",
+            "category": "memes",
+            "author": "Sample Author",
+            "title": "Sample Title",
+            "url": "google.com",
+            "urlToImage": "google.com",
+            "publishedAt": "Sample Time",
+            "viewCount": 10000
+        },
+        "embedding": null,
+        "coordinates": [3, 2],
+        "summary": "Sample Summary"
+    }
+]

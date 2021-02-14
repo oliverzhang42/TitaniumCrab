@@ -1,0 +1,33 @@
+# Starter pipeline for grabbing data on an hourly basis
+
+trigger: none
+
+variables:
+  # Python version: 3.7
+  pythonVersion: '3.7'
+  
+  projectRoot: $(System.DefaultWorkingDirectory)
+
+schedules:
+  - cron: "0 */1 * * *"
+    displayName: "Run every hour"
+    branches:
+      include:
+        - master
+    always: true
+
+steps:
+    - task: UsePythonVersion@0
+      inputs:
+        versionSpec: '$(pythonVersion)'
+      displayName: 'Use Python $(pythonVersion)'
+      
+    - script: |
+        python -m pip install --upgrade pip
+        pip install setup
+        pip install -r requirements.txt
+      displayName: "Install requirements"
+    - task: PythonScript@0
+      inputs:
+        scriptSource: 'filePath'
+        scriptPath: 'build.py'
